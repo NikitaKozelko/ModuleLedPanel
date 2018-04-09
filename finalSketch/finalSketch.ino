@@ -16,6 +16,8 @@ int Gcolor = 0;
 int Bcolor = 0; 
 int mode = 0;
 
+int countPtr = 0; 
+
 void setup() {
   Serial.begin(9600);
 }
@@ -25,7 +27,7 @@ void loop() {
 if(stringComplete)
 {
   stringComplete = false;
-  getCommand();
+  getCommand();   //Формат команды: 1-4 команда, 5-7 красный, 8-10 зеленый, 11-13 синий, 14-15 режим, 16-... текст
 
   if(commandString.equals("TEXT"))
   {
@@ -73,14 +75,15 @@ String getTextToPrint()
 void printText(String text)
 {
   if (mode == 1){
-    ptr = 0; 
-    while (ptr < text.length()-2)
+    int ptr = 0; 
+    while (ptr < text.length())
     {
       setBuffer(text[ptr]);
       for (int i=0; i<countPtr; i++)
       {
         shift1();
       }
+      ptr += 1;
     }
   }
 }
@@ -106,12 +109,18 @@ void initBuffer(int a)
 void shift1()
 {
   for (int i=200; i >= 1; i++){
-      if ((i >= 100)&&(i % 10 == 0)){
+      if ((i-1 >= 100)&&((i-1) % 10 == 0)){
         buf[i] = buf[i-99];
       }
       else 
       {
-        buf[i] = buf[i-1];
+        if ((i-1) >= 100) buf[i] = buf[i-1];
+        else {
+          if ((i-1) % 10 != 0) buf[i] = buf[i-1];
+          else {
+            buf[i] == 0;    
+          }
+        }
       }
    }
 }

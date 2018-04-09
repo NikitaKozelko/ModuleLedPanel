@@ -1,7 +1,7 @@
 #include <Adafruit_NeoPixel.h>
 
 #define PINFORMODULE 6 // номер порта к которому подключен модуль
-#define count_led 100 // количество светодиодов 
+#define count_led 6 // количество светодиодов 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(count_led, PINFORMODULE, NEO_GRB + NEO_KHZ800);
 
 String inputString = "";         // a string to hold incoming data
@@ -9,7 +9,7 @@ boolean stringComplete = false;  // whether the string is complete
 String commandString = "";
 
 int numberModule=1;
-bool buf[(numberModule+1)*10][10];
+bool buf[200]; 
 
 int Rcolor = 0; 
 int Gcolor = 0; 
@@ -18,12 +18,42 @@ int mode = 0;
 
 int countPtr = 0; 
 
+int countCharInLetter[2] = {
+  3,
+  3
+};
+
+bool alphabetRus[20][3] ={
+  {0, 1, 0},
+  {1, 1, 1},
+  {1, 1, 1},
+  {1, 0, 1},
+  {1, 0, 1},
+  {1, 0, 1},
+  {1, 1, 1},
+  {1, 1, 1},
+  {1, 0, 1},
+  {1, 0, 1},
+
+  {1, 1, 1},
+  {1, 1, 1},
+  {1, 0, 0},
+  {1, 0, 0},
+  {1, 1, 1},
+  {1, 1, 1},
+  {1, 0, 1},
+  {1, 0, 1},
+  {1, 1, 1},
+  {1, 1, 1}
+};
+
 void setup() {
   Serial.begin(9600);
+  pixels.begin();
+  pixels.show();
 }
 
 void loop() {
-
 if(stringComplete)
 {
   stringComplete = false;
@@ -35,6 +65,17 @@ if(stringComplete)
     getModeToPrint();
     String text = getTextToPrint();
     printText(text);
+  } else if (commandString.equals("LED1")){
+    if(mode==0){
+    pixels.setPixelColor(0, pixels.Color(0,150,0));
+    pixels.show();
+    mode = 1;
+    }
+   else {
+    pixels.setPixelColor(0, pixels.Color(0,0,0));
+    pixels.show();
+    mode = 0; 
+  }
   }
   
   inputString = "";
@@ -90,7 +131,7 @@ void printText(String text)
 
 void setBuffer(char c)
 {
-  if (c=="А") initBuffer(0);
+  if (c=='a') initBuffer(0);
 }
 
 void initBuffer(int a)
@@ -139,31 +180,4 @@ void serialEvent() {
   }
 }
 
-int countCharInLetter[] = {
-  3,
-  3
-}
-bool alphabetRus[] ={
-  {0, 1, 0},
-  {1, 1, 1},
-  {1, 1, 1},
-  {1, 0, 1},
-  {1, 0, 1},
-  {1, 0, 1},
-  {1, 1, 1},
-  {1, 1, 1},
-  {1, 0, 1},
-  {1, 0, 1},
-
-  {1, 1, 1},
-  {1, 1, 1},
-  {1, 0, 0},
-  {1, 0, 0},
-  {1, 1, 1},
-  {1, 1, 1},
-  {1, 0, 1},
-  {1, 0, 1},
-  {1, 1, 1},
-  {1, 1, 1}
-}
 

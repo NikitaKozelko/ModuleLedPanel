@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApplicationForArduino.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplicationForArduino"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button x:Name="Connect" Content="Connect to arduino" HorizontalAlignment="Left" Margin="44,56,0,0" VerticalAlignment="Top" Width="129" Click="Connect_Click"/>
+        <Button x:Name="Disable" Content="Disconnect at arduino" HorizontalAlignment="Left" Margin="201,56,0,0" VerticalAlignment="Top" Width="129" Click="Disable_Click"/>
+        <TextBlock x:Name="Redcolor" HorizontalAlignment="Left" Height="18" Margin="44,94,0,0" TextWrapping="Wrap" Text="Red color:" VerticalAlignment="Top" Width="76"/>
+        <TextBlock x:Name="GreenColor" HorizontalAlignment="Left" Height="18" Margin="44,126,0,0" TextWrapping="Wrap" Text="Green color" VerticalAlignment="Top" Width="76"/>
+        <TextBlock x:Name="BlueColor" HorizontalAlignment="Left" Height="18" Margin="44,154,0,0" TextWrapping="Wrap" Text="Blue color:" VerticalAlignment="Top" Width="76"/>
+        <TextBox x:Name="RedColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,93,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="GreenColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="BlueColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,153,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Message" HorizontalAlignment="Left" Height="23" Margin="44,195,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="201"/>
+        <Button x:Name="SendButton" Content="Send message" HorizontalAlignment="Left" Margin="266,195,0,0" VerticalAlignment="Top" Width="129" Click="SendButton_Click"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="44,22,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="Content">
+            <ComboBoxItem>COM1</ComboBoxItem>
+            <ComboBoxItem>COM2</ComboBoxItem>
+            <ComboBoxItem>COM3</ComboBoxItem>
+            <ComboBoxItem>COM4</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="Led1" Content="Led1" HorizontalAlignment="Left" Margin="44,238,0,0" VerticalAlignment="Top" Width="129" Click="Led1_Click"/>
+
+    </Grid>
+</Window>

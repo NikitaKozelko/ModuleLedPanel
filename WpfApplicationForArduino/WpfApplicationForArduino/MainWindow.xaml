@@ -15,7 +15,7 @@
         <TextBox x:Name="RedColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,93,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="GreenColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="BlueColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,153,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Message" HorizontalAlignment="Left" Height="23" Margin="44,195,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="201"/>
+        <TextBox x:Name="MessageTextBox" HorizontalAlignment="Left" Height="23" Margin="44,195,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="201"/>
         <Button x:Name="SendButton" Content="Send message" HorizontalAlignment="Left" Margin="266,195,0,0" VerticalAlignment="Top" Width="129" Click="SendButton_Click"/>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="44,22,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="Content">
             <ComboBoxItem>COM1</ComboBoxItem>

@@ -123,8 +123,14 @@ void printText(String text)
       for (int i=0; i<countPtr; i++)
       {
         shift1();
+        delay(10);
       }
       ptr += 1;
+    }
+    for (int i=0; i<10; i++)
+    {
+      shift1();
+      delay(10);
     }
   }
 }
@@ -141,7 +147,7 @@ void initBuffer(int a)
   {
     for (int j = 0; j < countPtr; j++)
     {
-      buf[(i+1)*10-j] = alphabetRus[a*10+i][countPtr - j -1];
+      buf[(i+1)*10-j-1] = alphabetRus[a*10+i][countPtr - j -1];
     }
   }
   countPtr += 1; //для пробела
@@ -149,21 +155,28 @@ void initBuffer(int a)
 
 void shift1()
 {
-  for (int i=200; i >= 1; i++){
-      if ((i-1 >= 100)&&((i-1) % 10 == 0)){
-        buf[i] = buf[i-99];
+  for (int i=200; i >= 1; i--){
+      if ((i >= 100)&&(i % 10 == 0)){
+        buf[i] = buf[i-100];
       }
       else 
       {
-        if ((i-1) >= 100) buf[i] = buf[i-1];
+        if (i >= 100) buf[i] = buf[i-1];
         else {
-          if ((i-1) % 10 != 0) buf[i] = buf[i-1];
+          if (i % 10 != 0) buf[i] = buf[i-1];
           else {
             buf[i] == 0;    
           }
         }
       }
+      lightLed(i);
    }
+}
+
+void lightLed(int i){
+  if (buf[1] == 1) pixels.setPixelColor(i, pixels.Color(Rcolor,Gcolor,Bcolor));
+  else pixels.setPixelColor(i, pixels.Color(0,0,0));
+  pixels.show(); 
 }
 
 void serialEvent() {

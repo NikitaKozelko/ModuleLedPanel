@@ -10,7 +10,7 @@
         <Button x:Name="Connect" Content="Connect to arduino" HorizontalAlignment="Left" Margin="44,56,0,0" VerticalAlignment="Top" Width="129" Click="Connect_Click"/>
         <Button x:Name="Disable" Content="Disconnect at arduino" HorizontalAlignment="Left" Margin="201,56,0,0" VerticalAlignment="Top" Width="129" Click="Disable_Click"/>
         <TextBlock x:Name="Redcolor" HorizontalAlignment="Left" Height="18" Margin="44,94,0,0" TextWrapping="Wrap" Text="Red color:" VerticalAlignment="Top" Width="76"/>
-        <TextBlock x:Name="GreenColor" HorizontalAlignment="Left" Height="18" Margin="44,126,0,0" TextWrapping="Wrap" Text="Green color" VerticalAlignment="Top" Width="76"/>
+        <TextBlock x:Name="BlueColorTextBoxGreenColor" HorizontalAlignment="Left" Height="18" Margin="44,126,0,0" TextWrapping="Wrap" Text="Green color" VerticalAlignment="Top" Width="76"/>
         <TextBlock x:Name="BlueColor" HorizontalAlignment="Left" Height="18" Margin="44,154,0,0" TextWrapping="Wrap" Text="Blue color:" VerticalAlignment="Top" Width="76"/>
         <TextBox x:Name="RedColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,93,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="GreenColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>

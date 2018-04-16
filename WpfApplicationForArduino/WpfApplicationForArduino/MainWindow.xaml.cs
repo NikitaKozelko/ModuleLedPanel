@@ -33,11 +33,11 @@ namespace WpfApplicationForArduino
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             string message = MessageTextBox.Text;
-            string rColor = Redcolor.Text;
-            string gColor = GreenColor.Text;
-            string bColor = BlueColor.Text;
+            string rColor = RedColorTextBox.Text;
+            string gColor = GreenColorTextBox.Text;
+            string bColor = BlueColorTextBox.Text;
             string command = "#TEXT" + rColor + gColor + bColor + "01" + message + "\n";
-
+            MessageBox.Show(command);
             port.Write(command);
         }
 

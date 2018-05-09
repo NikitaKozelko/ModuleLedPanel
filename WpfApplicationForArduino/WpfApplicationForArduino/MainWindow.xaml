@@ -3,27 +3,193 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:WpfApplicationForArduino"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="493.102" Width="525">
     <Grid>
-        <Button x:Name="Connect" Content="Connect to arduino" HorizontalAlignment="Left" Margin="44,56,0,0" VerticalAlignment="Top" Width="129" Click="Connect_Click"/>
-        <Button x:Name="Disable" Content="Disconnect at arduino" HorizontalAlignment="Left" Margin="201,56,0,0" VerticalAlignment="Top" Width="129" Click="Disable_Click"/>
-        <TextBlock x:Name="Redcolor" HorizontalAlignment="Left" Height="18" Margin="44,94,0,0" TextWrapping="Wrap" Text="Red color:" VerticalAlignment="Top" Width="76"/>
-        <TextBlock x:Name="BlueColorTextBoxGreenColor" HorizontalAlignment="Left" Height="18" Margin="44,126,0,0" TextWrapping="Wrap" Text="Green color" VerticalAlignment="Top" Width="76"/>
-        <TextBlock x:Name="BlueColor" HorizontalAlignment="Left" Height="18" Margin="44,154,0,0" TextWrapping="Wrap" Text="Blue color:" VerticalAlignment="Top" Width="76"/>
-        <TextBox x:Name="RedColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,93,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="GreenColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="BlueColorTextBox" HorizontalAlignment="Left" Height="23" Margin="125,153,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="MessageTextBox" HorizontalAlignment="Left" Height="23" Margin="44,195,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="201"/>
-        <Button x:Name="SendButton" Content="Send message" HorizontalAlignment="Left" Margin="266,195,0,0" VerticalAlignment="Top" Width="129" Click="SendButton_Click"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="44,22,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="Content">
-            <ComboBoxItem>COM1</ComboBoxItem>
-            <ComboBoxItem>COM2</ComboBoxItem>
-            <ComboBoxItem>COM3</ComboBoxItem>
-            <ComboBoxItem>COM4</ComboBoxItem>
-        </ComboBox>
-        <Button x:Name="Led1" Content="Led1" HorizontalAlignment="Left" Margin="44,238,0,0" VerticalAlignment="Top" Width="129" Click="Led1_Click"/>
-
+        <StackPanel Orientation="Vertical" Margin="0,0,-0.333,0" >
+            <ComboBox x:Name="ComboBox" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top" Width="120" SelectedValuePath="Content">
+                <ComboBoxItem>COM1</ComboBoxItem>
+                <ComboBoxItem>COM2</ComboBoxItem>
+                <ComboBoxItem>COM3</ComboBoxItem>
+                <ComboBoxItem>COM4</ComboBoxItem>
+            </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="Connect" Content="Connect to arduino" Margin="100 10 0 10" Width="150" Click="Connect_Click"/>
+                <Button x:Name="Disable" Content="Disconnect at arduino" Margin="20 10 0 10" Width="150" Click="Disable_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Center" Text="Color picker:" Margin="100 10 0 10" Width="150" VerticalAlignment="Top"/>
+                <xctk:ColorPicker x:Name="ColorPicker" HorizontalAlignment="Center" Margin="20 10 0 10" Width="150"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Type of animation:" Margin="80 10 0 10" Width="100" VerticalAlignment="Top"/>
+                <ComboBox Name="ModePicker" Height="100" Width="260" VerticalAlignment="Top" Margin="20 0 10 0" SelectionChanged="ModePicker_SelectionChanged">
+                    <ComboBoxItem IsSelected="True" Name="q1">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="src/mode1.jpg"  Width="190" Height="100"/>
+                            <TextBlock>1</TextBlock>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Name="q2">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="src/mode2.jpg" Width="190" Height="100"/>
+                        <TextBlock>2</TextBlock>
+                    </StackPanel>
+                    </ComboBoxItem>      
+                    <ComboBoxItem Name="q3">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="src/mode3.jpg" Width="190" Height="100"/>
+                            <TextBlock>3</TextBlock>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Name="q4">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="src/mode4.jpg" Width="190" Height="100"/>
+                        <TextBlock>4</TextBlock>
+                    </StackPanel>
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Text for display" Margin="100 10 0 10" Width="80" VerticalAlignment="Top"/>
+                <TextBox x:Name="MessageTextBox" Margin="20 10 0 10" Width="220" Text="Text for display:"/>
+            </StackPanel>
+            <StackPanel>
+                <Grid ShowGridLines="False" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Row="0" Grid.Column="0" Name="CheckBox0"></CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="1" Name="CheckBox1"></CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="2" Name="CheckBox2"></CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="3" Name="CheckBox3"></CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="4" Name="CheckBox4"></CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="5" Name="CheckBox5"></CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="6" Name="CheckBox6"></CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="7" Name="CheckBox7"></CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="8" Name="CheckBox8"></CheckBox>
+                    <CheckBox Grid.Row="0" Grid.Column="9" Name="CheckBox9"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="0" Name="CheckBox10"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="1" Name="CheckBox11"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="2" Name="CheckBox12"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="3" Name="CheckBox13"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="4" Name="CheckBox14"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="5" Name="CheckBox15"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="6" Name="CheckBox16"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="7" Name="CheckBox17"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="8" Name="CheckBox18"></CheckBox>
+                    <CheckBox Grid.Row="1" Grid.Column="9" Name="CheckBox19"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="0" Name="CheckBox20"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="1" Name="CheckBox21"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="2" Name="CheckBox22"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="3" Name="CheckBox23"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="4" Name="CheckBox24"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="5" Name="CheckBox25"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="6" Name="CheckBox26"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="7" Name="CheckBox27"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="8" Name="CheckBox28"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="9" Name="CheckBox29"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="0" Name="CheckBox30"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="1" Name="CheckBox31"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="2" Name="CheckBox32"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="3" Name="CheckBox33"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="4" Name="CheckBox34"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="5" Name="CheckBox35"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="6" Name="CheckBox36"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="7" Name="CheckBox37"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="8" Name="CheckBox38"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="9" Name="CheckBox39"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="0" Name="CheckBox40"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="1" Name="CheckBox41"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="2" Name="CheckBox42"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="3" Name="CheckBox43"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="4" Name="CheckBox44"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="5" Name="CheckBox45"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="6" Name="CheckBox46"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="7" Name="CheckBox47"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="8" Name="CheckBox48"></CheckBox>
+                    <CheckBox Grid.Row="4" Grid.Column="9" Name="CheckBox49"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="0" Name="CheckBox50"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="1" Name="CheckBox51"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="2" Name="CheckBox52"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="3" Name="CheckBox53"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="4" Name="CheckBox54"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="5" Name="CheckBox55"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="6" Name="CheckBox56"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="7" Name="CheckBox57"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="8" Name="CheckBox58"></CheckBox>
+                    <CheckBox Grid.Row="5" Grid.Column="9" Name="CheckBox59"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="0" Name="CheckBox60"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="1" Name="CheckBox61"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="2" Name="CheckBox62"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="3" Name="CheckBox63"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="4" Name="CheckBox64"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="5" Name="CheckBox65"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="6" Name="CheckBox66"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="7" Name="CheckBox67"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="8" Name="CheckBox68"></CheckBox>
+                    <CheckBox Grid.Row="6" Grid.Column="9" Name="CheckBox69"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="0" Name="CheckBox70"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="1" Name="CheckBox71"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="2" Name="CheckBox72"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="3" Name="CheckBox73"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="4" Name="CheckBox74"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="5" Name="CheckBox75"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="6" Name="CheckBox76"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="7" Name="CheckBox77"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="8" Name="CheckBox78"></CheckBox>
+                    <CheckBox Grid.Row="7" Grid.Column="9" Name="CheckBox79"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="0" Name="CheckBox80"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="1" Name="CheckBox81"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="2" Name="CheckBox82"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="3" Name="CheckBox83"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="4" Name="CheckBox84"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="5" Name="CheckBox85"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="6" Name="CheckBox86"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="7" Name="CheckBox87"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="8" Name="CheckBox88"></CheckBox>
+                    <CheckBox Grid.Row="8" Grid.Column="9" Name="CheckBox89"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="0" Name="CheckBox90"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="1" Name="CheckBox91"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="2" Name="CheckBox92"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="3" Name="CheckBox93"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="4" Name="CheckBox94"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="5" Name="CheckBox95"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="6" Name="CheckBox96"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="7" Name="CheckBox97"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="8" Name="CheckBox98"></CheckBox>
+                    <CheckBox Grid.Row="9" Grid.Column="9" Name="CheckBox99"></CheckBox>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="SendMessageButton" HorizontalAlignment="Center" Margin="60 10 0 10"  Width="100" Content="Send message" Click="SendMessageButton_Click"/>
+                <Button x:Name="SendPicButton" HorizontalAlignment="Center" Margin="50 10 0 10"  Width="100" Content="Send picture" Click="SendPicButton_Click"/>
+                <Button x:Name="TestSnakeButton" HorizontalAlignment="Center" Margin="50 10 0 10"  Width="100" Content="Test snake" Click="TestSnake_Click"/>
+                <!--<Button x:Name="LedShowButton" HorizontalAlignment="Center" Margin="20 10 0 10"  Width="100" Content="Led show" Click="LedShowButton_Click"/>-->
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

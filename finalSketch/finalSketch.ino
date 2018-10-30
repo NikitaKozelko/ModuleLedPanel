@@ -655,7 +655,6 @@ void getCommand()
 //}
 
 void printUgl(String text){
-  Serial.println("xuy");
   int ptr = 0; 
   int i;
   //setPicBuffer(text);
@@ -690,7 +689,6 @@ void printUgl(String text){
   //end set pic buffer
   Serial.print("init");
   delay(15);
-  //Serial.println("xuy");
   if (mode == 3)
   {
       for (i=0; i<20; i++)
